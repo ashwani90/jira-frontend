@@ -1,35 +1,52 @@
 import * as React from 'react';
 import Header from '../../components/header/Header';
-import Tabs from '../../components/header/tabs';
+import TTabs from '../../components/header/tabs';
 import Grid from '@mui/material/Grid';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Paper } from '@mui/material';
 import Filter from "../../components/filter/filter";
+import SortDropDown from '../../components/generic/sortDropDown';
+import TextBlock from '../../components/generic/textBlock';
+import TaskList from '../../components/task/taskList';
+import StickyFooter from '../../components/footer/footer';
 
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    backgroundColor: "#AEBDCA",
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    display: "block",
   }));
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  backgroundColor: "#AEBDCA",
+}));
+
+const items = ["one", "two", "three"];
 
 function Home() {
   return (
     <>
    <Header />
    <Grid container sx={{ p: 2  }}>
-   <Tabs />
-   <Tabs />
+   <TTabs items={items}/>
    </Grid>
-   <Grid container sx={{ p: 2  }}>
+   <StyledGrid container sx={{ p: 2, backgroundColor: "grey" }}>
   <Grid item xs={3}>
     <Filter />
   </Grid>
   <Grid item xs={9}>
-    <Item></Item>
+    <Item>
+    <SortDropDown />
+    </Item>
+    <Item>
+      <TextBlock />
+    </Item>
+    <TaskList />
   </Grid>
-</Grid>
+</StyledGrid>
+<StickyFooter />
    </>
   );
 }

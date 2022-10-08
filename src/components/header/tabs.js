@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { tab_data } from '../../constants/tab_data';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -38,10 +39,11 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+export default function TTabs(props) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
+    console.log(value);
     setValue(newValue);
   };
 
@@ -49,19 +51,31 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          {tab_data?.map(index => 
+              <Tab key={index.project} label={index.project} {...a11yProps(0)} />
+          )}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Item One
+      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          {tab_data[0].modules?.map(index => 
+              <Tab key={index.name} label={index.name} {...a11yProps(0)} />
+          )}
+        </Tabs>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          {tab_data[1].modules?.map(index => 
+              <Tab key={index.name} label={index.name} {...a11yProps(0)} />
+          )}
+        </Tabs>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          {tab_data[2].modules?.map(index => 
+              <Tab key={index.name} label={index.name} {...a11yProps(0)} />
+          )}
+        </Tabs>
       </TabPanel>
     </Box>
   );
