@@ -6,6 +6,7 @@ import Divider from '@mui/material/Divider';
 import SearchIcon from '@mui/icons-material/Search';
 import {FilterSearch,SearchIconWrapper,StyledInputBase, theme} from "../../styles/header";
 import FilterList from './filterList';
+import SettingsList from "../settings/settingsList";
 
 const Item = styled('div')(() => ({
     marginTop: "10px",
@@ -18,7 +19,7 @@ const Item = styled('div')(() => ({
     fontSize: "20px",
   }));
 
-export default function Filter() {
+export default function Filter(props) {
   return (
     <Box
       sx={{
@@ -44,7 +45,7 @@ export default function Filter() {
             />
           </FilterSearch>
           <Divider />
-          <FilterList />
+         {props.listType=="settings" ? <SettingsList list={props.list}/> : <FilterList />} 
       </Paper>
     </Box>
   );
