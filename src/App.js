@@ -8,6 +8,7 @@ import {
 const Home = React.lazy(() => import('./containers/pages/Home'));
 const Settings = React.lazy(() => import('./containers/pages/Settings'));
 const Dashboard = React.lazy(() => import('./containers/portal/dashboard'));
+const TaskScheduler = React.lazy(() => import('./containers/pages/TaskScheduler'))
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               <Route exact path='/' element={<Home />} />
               <Route path='/settings' element={<Settings />} />
               <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/task-scheduler' element={<TaskScheduler />} />
           </Routes>
         </div>
     
