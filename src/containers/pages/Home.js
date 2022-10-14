@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Header from '../../components/header/Header';
 import TTabs from '../../components/header/tabs';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
@@ -8,7 +7,6 @@ import Filter from "../../components/filter/filter";
 import SortDropDown from '../../components/generic/sortDropDown';
 import TextBlock from '../../components/generic/textBlock';
 import TaskList from '../../components/task/taskList';
-import StickyFooter from '../../components/footer/footer';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: "#AEBDCA",
@@ -28,7 +26,6 @@ const items = ["one", "two", "three"];
 function Home() {
   return (
     <>
-   <Header />
    <Grid container sx={{ p: 2  }}>
    <TTabs items={items}/>
    </Grid>
@@ -46,7 +43,6 @@ function Home() {
     <TaskList />
   </Grid>
 </StyledGrid>
-<StickyFooter />
    </>
   );
 }
